@@ -1,0 +1,14 @@
+<h1>本一覧</h1>
+  <%
+    @foreach(@vars(:books)) do book
+    """
+    <ul>
+      <img src="", alt="表紙" />
+      <li>タイトル :$(book.title)</li>
+      <li>出版日 :$(book.publication_date)</li>
+    </ul>
+    """
+    end
+%>
+
+<p>登録数: $( length(@vars(:books)) )冊</p>

@@ -2,6 +2,7 @@
 module BooksController
 # Datesモジュールをimport
 using Dates
+using Genie.Renderer
 
     struct Book
       title::String
@@ -22,12 +23,8 @@ using Dates
 
     # mapreduce関数を利用して本のリストを返す
     function show_books()
-        response = "
-           <h1>Julia Book</h1>
-           <ul>
-             $( mapreduce(book -> "<li>$(book.title) / $(book.publication_date)</li>", *, books) )
-           </ul>
-        "
-        return response
+        html!(:books, :show_books, books = books)
+
     end
+
 end
